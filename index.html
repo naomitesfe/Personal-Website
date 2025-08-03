@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <title>Nuhamin Tesfaye - Portfolio</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
@@ -8,14 +10,16 @@
         font-family: "Roboto", sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #222945; /* Dark theme background color */
+        background-color: #222945;
         color: white;
       }
+
       .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
       }
+
       .header {
         display: flex;
         align-items: center;
@@ -24,129 +28,192 @@
         background-color: #1b1f2e;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       }
+
       .logo {
         width: 100px;
         height: 100px;
         border-radius: 50%;
         animation: float 6s ease-in-out infinite;
       }
+
       .name {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: bold;
         color: #f0f0f0;
+        text-align: center;
+        flex: 1;
       }
+
       .nav {
         display: flex;
         list-style: none;
+        margin: 0;
+        padding: 0;
       }
+
       .nav li {
         margin: 0 10px;
       }
+
       .nav a {
         text-decoration: none;
         color: #f0f0f0;
         transition: color 0.3s;
       }
+
       .nav a:hover {
         color: #555;
       }
+
       .section {
-        padding: 60px 0;
+        padding: 60px 20px;
         background: rgba(0, 0, 0, 0.7);
         margin-bottom: 40px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         animation: fadeIn 2s ease-in-out;
       }
+
       .section-title {
         font-size: 28px;
         font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         text-align: center;
         color: #f0f0f0;
       }
+
       .about {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
       }
+
       .about-image {
         width: 300px;
         height: 300px;
         border-radius: 50%;
         margin-right: 40px;
         animation: float 6s ease-in-out infinite;
+        object-fit: cover;
       }
+
       .about-text {
         max-width: 600px;
         animation: fadeIn 2s ease-in-out;
       }
+
+      .about-text p {
+        margin-top: 0;
+        margin-bottom: 1em;
+        line-height: 1.6;
+        font-size: 18px;
+      }
+
       .skills {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 20px;
         text-align: center;
       }
+
       .skill {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        flex-direction: column;
         animation: fadeIn 2s ease-in-out;
       }
+
       .skill-icon {
         width: 50px;
         height: 50px;
         margin-bottom: 10px;
         animation: float 6s ease-in-out infinite;
       }
+
       .projects {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
       }
+
       .project {
         position: relative;
-        overflow: hidden;
         border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+        text-decoration: none;
+        color: inherit;
+        display: block;
       }
+
+      .project:hover {
+        transform: scale(1.05);
+      }
+
       .project-image {
         width: 100%;
         height: 200px;
         object-fit: cover;
-        transition: transform 0.3s;
+        display: block;
       }
+
       .project-title {
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
         padding: 10px;
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.7);
         color: white;
         font-size: 18px;
         text-align: center;
+        font-weight: bold;
+        z-index: 2;
       }
+
       .project-description {
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.85);
         color: white;
         font-size: 14px;
-        display: none;
         text-align: center;
-      }
-      .project:hover .project-image {
-        transform: scale(1.05);
-      }
-      .project:hover .project-description {
-        display: block;
-      }
-      .resume {
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 10px;
+        z-index: 3;
       }
+
+      .project:hover .project-description {
+        opacity: 1;
+      }
+
+      .resume {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .resume p {
+        font-size: 18px;
+        text-align: center;
+        max-width: 700px;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
       .resume-button {
         padding: 15px 25px;
         border: none;
@@ -156,21 +223,24 @@
         cursor: pointer;
         transition: background-color 0.3s, transform 0.3s;
       }
+
       .resume-button:hover {
         background-color: #555;
         color: white;
         transform: translateY(-5px);
       }
+
       .contact {
         display: flex;
-        align-items: center;
         justify-content: center;
       }
+
       .contact-form {
         max-width: 600px;
-        margin: 0 20px;
+        width: 100%;
         animation: fadeIn 2s ease-in-out;
       }
+
       .contact-form input,
       .contact-form textarea {
         width: 100%;
@@ -179,7 +249,11 @@
         margin-bottom: 10px;
         background-color: #333;
         color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        box-sizing: border-box;
       }
+
       .contact-form button {
         padding: 10px 20px;
         border: none;
@@ -187,25 +261,31 @@
         color: #333;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.3s;
+        font-size: 16px;
+        border-radius: 5px;
       }
+
       .contact-form button:hover {
         background-color: #555;
         color: white;
         transform: translateY(-5px);
       }
+
       .footer {
         padding: 20px;
         background-color: #1b1f2e;
-        color: white;
+        color: #ffff;
         text-align: center;
       }
+
       .footer a {
-        color: white;
+        color: #007BFF;
         text-decoration: none;
         transition: color 0.3s;
       }
+
       .footer a:hover {
-        color: #ccc;
+        color: #007BFF;
       }
 
       @keyframes float {
@@ -219,6 +299,7 @@
           transform: translateY(0);
         }
       }
+
       @keyframes fadeIn {
         0% {
           opacity: 0;
@@ -231,51 +312,45 @@
   </head>
   <body>
     <div class="container">
+      <!-- Header -->
       <div class="header">
         <img src="Nuha.jpg" alt="Logo" class="logo" />
         <h1 class="name">Nuhamin Tesfaye, P.E. (Professional Engineer)</h1>
         <ul class="nav">
           <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
+          <li><a href="#languages">Programming Languages</a></li>
+          <li><a href="#interests">Interests</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#resume">Resume</a></li>
+          <li><a href="#resume">Education</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
+
+      <!-- About Me -->
       <div class="section" id="about">
         <h2 class="section-title">About Me</h2>
         <div class="about">
-          <img src="assets/images/Nuha.jpg" alt="Image" class="about-image" />
+          <img src="Nuha.jpg" alt="Image" class="about-image" />
           <div class="about-text">
             <p>
-              I am a highly skilled and self-driven Computer engineer and
-              consultant with a vast knowledge of computer systems, networking,
-              programming, and Enterprise Resource Planning. I have a keen eye
-              for details, a strong problem-solving ability, and a great
-              combination of leadership and technology skills. I am looking for
-              a role where I can use these skills to create innovative solutions
-              and contribute to the growth of your organization.
+              I am a highly skilled and self-driven Computer Engineer and Cloud
+              Consultant with strong knowledge of computer systems, networking,
+              programming, and Enterprise Resource Planning. I love solving
+              problems and building scalable solutions.
             </p>
             <p>
-              I am a computer engineer with AWS and Azure certifications. I have
-              over 2 years of experience in developing cloud-based solutions for
-              various domains. I am passionate about learning new technologies
-              and solving complex problems.
+              I'm multi certified in AWS, Azure and CCNA and I have over 3 years of experience
+              developing cloud-based solutions. I'm passionate about learning,
+              technology, and innovation.
             </p>
           </div>
         </div>
       </div>
-      <div class="section" id="skills">
-        <h2 class="section-title">Skills</h2>
+
+      <!-- Programming Languages -->
+      <div class="section" id="languages">
+        <h2 class="section-title">Programming Languages</h2>
         <div class="skills">
-          <div class="skill">
-            <img src="AWS.jpg" alt="AWS" class="skill-icon" />
-            <span>AWS</span>
-          </div>
-          <div class="skill">
-            <img src="Azure.png" alt="Azure" class="skill-icon" />
-            <span>Azure</span>
-          </div>
           <div class="skill">
             <img src="HTML5.png" alt="HTML" class="skill-icon" />
             <span>HTML</span>
@@ -292,121 +367,105 @@
             <img src="Python.png" alt="Python" class="skill-icon" />
             <span>Python</span>
           </div>
+          <div class="skill">
+            <img src="AWS.jpg" alt="AWS" class="skill-icon" />
+            <span>AWS</span>
+          </div>
+          <div class="skill">
+            <img src="Azure.png" alt="Azure" class="skill-icon" />
+            <span>Azure</span>
+          </div>
         </div>
       </div>
+
+      <!-- Interests -->
+      <div class="section" id="interests">
+        <h2 class="section-title">Interests</h2>
+        <ul style="max-width: 800px; margin: auto; line-height: 1.8; font-size: 18px;">
+          <li>🔧 Cloud-based development with AWS and Azure</li>
+          <li>📱 Responsive web development and UI/UX design</li>
+          <li>🤖 IoT and AI-driven systems</li>
+          <li>🌍 Enabling accessibility through tech</li>
+        </ul>
+      </div>
+
+      <!-- Projects -->
       <div class="section" id="projects">
         <h2 class="section-title">Projects</h2>
         <div class="projects">
-          <div class="project">
-            <img
-              src="HelpDesk.png"
-              alt="IT_helpdesk_website"
-              class="project-image"
-            />
-            <div class="project-title">IT_helpdesk_website</div>
+          <a
+            href="https://github.com/naomitesfe/IT_Helpdesk_Website"
+            target="_blank"
+            class="project"
+            rel="noopener noreferrer"
+          >
+            <img src="HelpDesk.png" alt="IT Helpdesk Website" class="project-image" />
+            <div class="project-title">IT Helpdesk Website</div>
             <div class="project-description">
-              <p>
-                This is an IT Help Desk System built using PHP and SQL. It
-                allows users to report their issues and get them resolved by the
-                IT team.
-              </p>
-              <p>
-                The system keeps track of all the issues reported, their status,
-                and the IT team member handling them. I used HTML, CSS,
-                JavaScript to develop the front-end and back-end of the app.
-              </p>
+              A PHP + SQL system where users report issues to the IT department and track resolutions.
             </div>
-          </div>
-          <div class="project">
-            <img
-              src="IoT-Smart-Home2.jpg"
-              alt="IoT-Smart-Home2"
-              class="project-image"
-            />
-            <div class="project-title">IoT-Smart-Home2</div>
+          </a>
+
+          <a
+            href="https://github.com/naomitesfe/iot-smart-home"
+            target="_blank"
+            class="project"
+            rel="noopener noreferrer"
+          >
+            <img src="IoT-Smart-Home2.jpg" alt="IoT Smart Home" class="project-image" />
+            <div class="project-title">IoT Smart Home</div>
             <div class="project-description">
-              <p>
-                This is an IOT Smart Home Automation using Raspberry pi and
-                Azure Cloud Services.
-              </p>
-              <p>
-                This project is a web server that can be accessed frome anywhere
-                in the world and that allows users to control, monitor and
-                automate their home environment.
-              </p>
+              Raspberry Pi + Azure cloud-based smart home automation accessible globally.
             </div>
-          </div>
-          <div class="project">
-            <img
-              src="SignLang.png"
-              alt="Sign Language to Text Converter Using Machine Learning"
-              class="project-image"
-            />
-            <div class="project-title">
-              Sign Language to Text Converter Using Machine Learning
-            </div>
+          </a>
+
+          <a href="https://github.com/naomitesfe/" target="_blank" class="project" rel="noopener noreferrer">
+            <img src="SignLang.png" alt="Sign Language App" class="project-image" />
+            <div class="project-title">Sign Language Translator</div>
             <div class="project-description">
-              <p>
-                This project is constructed as a web application to allow usage
-                to large population. Using the translator, it is possible to
-                translate Amharic sign language into texts that a hearing
-                impaired can understand. The tool is useful in enabling people
-                who don’t know sign language to communicate with deaf
-                individuals.The hearing-impaired can also utilize the software
-                to develop written language skills. Moreover, it may be used as
-                a teaching tool for Ethiopia.
-              </p>
+              Converts Ethiopian Sign Language to text using machine learning to aid communication and education.
             </div>
-          </div>
+          </a>
         </div>
       </div>
+
+      <!-- Resume -->
       <div class="section" id="resume">
-        <h2 class="section-title">Resume</h2>
+        <h2 class="section-title">Educational Background & Certifications</h2>
         <div class="resume">
+          <p>
+            I hold a Bachelor's degree in Computer Engineering from Hawassa University. Additionally, I completed a program in Organizational Leadership at Aspire Institute, affiliated with Harvard University.
+            I am certified in multiple industry-recognized credentials, including AWS Cloud Practitioner and AWS Cloud Quest, Microsoft Azure Fundamentals, Azure AI Developer, Azure Administrator Associate, Azure Solutions Architect Expert, as well as Cisco certifications: CCNA 1, CCNA 2, CCNA 3, and Cisco DevNet Associate.
+          </p>
           <button
             class="resume-button"
-            onclick="window.open('https://drive.google.com/file/d/1oqAixwbPBiQZ8Nop4rtpb7TQn-nuFtCg/view?usp=sharing')"
+            onclick="window.open('https://drive.google.com/file/d/1cXiUKXPrP3Tfzq4c8isfI1EVp2Beppm9/view?usp=sharing')"
           >
-            Download PDF
+            Download My CV
           </button>
-          <!-- Replace with your resume link -->
         </div>
       </div>
+
+      <!-- Contact -->
       <div class="section" id="contact">
         <h2 class="section-title">Contact Me</h2>
         <div class="contact">
-          <form
-            class="contact-form"
-            action="mailto:tesfayenuhamin@gmail.com"
-            method="post"
-          >
+          <form class="contact-form" action="https://formspree.io/f/mldlwwjy" method="POST">
             <input type="text" name="name" placeholder="Name" required />
             <input type="email" name="email" placeholder="Email" required />
-            <textarea
-              name="message"
-              placeholder="Message"
-              rows="5"
-              required
-            ></textarea>
+            <textarea name="message" placeholder="Message" rows="5" required></textarea>
             <button type="submit">Send</button>
           </form>
         </div>
       </div>
+
+      <!-- Footer -->
       <div class="footer">
+        <p>© 2025 Nuhamin Tesfaye. All rights reserved.</p>
         <p>
-          © 2024 Nuhamin Tesfaye, P.E. (Professional Engineer). All rights
-          reserved.
-        </p>
-        <p>
-          Follow me on
-          <a
-            href="https://www.linkedin.com/in/nuhamin-tesfaye-98608119b/"
-            style="color: blue"
-            >LinkedIn</a
-          >
-          and
-          <a href="https://github.com/naomitesfe" style="color: blue"> GitHub</a
-          >.
+          Connect on
+          <a href="https://www.linkedin.com/in/nuhamin-tesfaye-98608119b/" target="_blank">LinkedIn</a> |
+          <a href="https://github.com/naomitesfe" target="_blank">GitHub</a>
         </p>
       </div>
     </div>
